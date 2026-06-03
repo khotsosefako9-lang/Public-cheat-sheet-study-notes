@@ -6,16 +6,16 @@
 <title>Public Economics — Cram Sheet</title>
 <style>
   :root {
-    --bg: #0e0f13;
-    --surface: #161820;
-    --border: #2a2d3a;
-    --accent: #e8c84a;
-    --accent2: #4ab8e8;
-    --accent3: #e84a7a;
-    --text: #d8dae8;
-    --muted: #7a7d96;
-    --green: #4ae8a0;
-    --orange: #e89a4a;
+    --bg: #ffffff;
+    --surface: #f8f8f8;
+    --border: #e0e0e0;
+    --accent: #1a1a1a;
+    --accent2: #2a6496;
+    --accent3: #c0392b;
+    --text: #1a1a1a;
+    --muted: #888888;
+    --green: #27ae60;
+    --orange: #e67e22;
     --font-head: 'IBM Plex Mono', monospace;
     --font-body: 'IBM Plex Sans', system-ui, sans-serif;
   }
@@ -35,7 +35,7 @@
 
   /* ── HEADER ── */
   .page-header {
-    border: 1px solid var(--accent);
+    border: 1px solid #cccccc;
     padding: 10px 14px;
     margin-bottom: 14px;
     display: flex;
@@ -43,20 +43,20 @@
     align-items: center;
     flex-wrap: wrap;
     gap: 6px;
-    background: #1a1c10;
+    background: #f4f4f4;
   }
   .page-header h1 {
     font-family: var(--font-head);
     font-size: 14px;
-    color: var(--accent);
+    color: #1a1a1a;
     letter-spacing: 0.05em;
   }
   .page-header .meta {
     font-family: var(--font-head);
     font-size: 10.5px;
-    color: var(--muted);
+    color: #888888;
   }
-  .meta span { color: var(--accent2); margin: 0 4px; }
+  .meta span { color: #2a6496; margin: 0 4px; }
 
   /* ── GRID ── */
   .grid {
@@ -83,15 +83,15 @@
     font-size: 10px;
     letter-spacing: 0.12em;
     text-transform: uppercase;
-    color: var(--accent);
-    border-bottom: 1px solid var(--border);
+    color: #2a6496;
+    border-bottom: 1px solid #e0e0e0;
     padding-bottom: 5px;
     margin-bottom: 8px;
     display: flex;
     justify-content: space-between;
   }
-  .card-title .ch { color: var(--muted); font-weight: 400; }
-  .card-title .nb { color: var(--accent3); }
+  .card-title .ch { color: #888888; font-weight: 400; }
+  .card-title .nb { color: #c0392b; }
 
   /* ── ROWS / ITEMS ── */
   .row {
@@ -103,18 +103,18 @@
   .label {
     font-family: var(--font-head);
     font-size: 10px;
-    color: var(--accent2);
+    color: #2a6496;
     min-width: 90px;
     flex-shrink: 0;
   }
-  .label.grn { color: var(--green); }
-  .label.red { color: var(--accent3); }
-  .label.ylw { color: var(--accent); }
+  .label.grn { color: #27ae60; }
+  .label.red { color: #c0392b; }
+  .label.ylw { color: #e67e22; }
   .val { color: var(--text); }
-  .val b { color: var(--accent); font-weight: 600; }
-  .val em { color: var(--muted); font-style: normal; }
-  .val .hi { color: var(--green); }
-  .val .warn { color: var(--orange); }
+  .val b { color: #2a6496; font-weight: 600; }
+  .val em { color: #888888; font-style: normal; }
+  .val .hi { color: #27ae60; }
+  .val .warn { color: #e67e22; }
 
   /* ── NUMBERED LIST ── */
   .num-list { counter-reset: item; list-style: none; }
@@ -123,9 +123,9 @@
     content: counter(item);
     font-family: var(--font-head);
     font-size: 10px;
-    color: var(--accent);
-    background: #2a1f00;
-    border: 1px solid var(--accent);
+    color: #2a6496;
+    background: #eaf2fb;
+    border: 1px solid #2a6496;
     width: 16px; height: 16px;
     display: flex; align-items: center; justify-content: center;
     flex-shrink: 0; margin-top: 1px;
@@ -138,25 +138,25 @@
     font-size: 9.5px;
     text-transform: uppercase;
     letter-spacing: 0.08em;
-    color: var(--muted);
-    border-bottom: 1px solid var(--border);
+    color: #888888;
+    border-bottom: 1px solid #e0e0e0;
     padding: 3px 5px;
     text-align: left;
   }
-  td { padding: 3px 5px; border-bottom: 1px solid #1f2130; vertical-align: top; }
+  td { padding: 3px 5px; border-bottom: 1px solid #eeeeee; vertical-align: top; }
   tr:last-child td { border-bottom: none; }
-  td b { color: var(--accent2); font-weight: 600; }
-  td .pos { color: var(--green); }
-  td .neg { color: var(--accent3); }
-  td .ylw { color: var(--accent); }
+  td b { color: #2a6496; font-weight: 600; }
+  td .pos { color: #27ae60; }
+  td .neg { color: #c0392b; }
+  td .ylw { color: #e67e22; }
 
   /* ── FORMULA BOX ── */
   .formula {
     font-family: var(--font-head);
     font-size: 11px;
-    color: var(--accent);
-    background: #1a1c10;
-    border-left: 3px solid var(--accent);
+    color: #2a6496;
+    background: #f4f4f4;
+    border-left: 3px solid #2a6496;
     padding: 5px 8px;
     margin: 6px 0;
   }
@@ -170,34 +170,34 @@
     border: 1px solid;
     margin-left: 4px;
   }
-  .badge.nb { border-color: var(--accent3); color: var(--accent3); }
-  .badge.sec { border-color: var(--accent2); color: var(--accent2); }
+  .badge.nb { border-color: #c0392b; color: #c0392b; }
+  .badge.sec { border-color: #2a6496; color: #2a6496; }
 
   /* ── DIVIDER ── */
-  .divider { border: none; border-top: 1px solid var(--border); margin: 7px 0; }
+  .divider { border: none; border-top: 1px solid #e0e0e0; margin: 7px 0; }
 
   /* ── NOTE ── */
   .note {
     font-size: 10.5px;
-    color: var(--muted);
-    border-left: 2px solid var(--border);
+    color: #888888;
+    border-left: 2px solid #e0e0e0;
     padding-left: 6px;
     margin-top: 5px;
   }
-  .note b { color: var(--orange); }
+  .note b { color: #e67e22; }
 
   /* ── FOOTER ── */
   .footer {
     font-family: var(--font-head);
     font-size: 10px;
-    color: var(--muted);
-    border-top: 1px solid var(--border);
+    color: #888888;
+    border-top: 1px solid #e0e0e0;
     margin-top: 14px;
     padding-top: 8px;
     text-align: center;
     letter-spacing: 0.06em;
   }
-  .footer span { color: var(--accent3); }
+  .footer span { color: #c0392b; }
 </style>
 </head>
 <body>
@@ -428,7 +428,7 @@
 
     <hr class="divider">
 
-    <div style="margin-bottom:5px;font-family:var(--font-head);font-size:10px;color:var(--accent);">Arrow's Impossibility — 5 Conditions (no rule can satisfy all)</div>
+    <div style="margin-bottom:5px;font-family:var(--font-head);font-size:10px;color:#2a6496;">Arrow's Impossibility — 5 Conditions (no rule can satisfy all)</div>
     <ul class="num-list">
       <li><span class="val"><b>Rationality</b> — clear, complete preferences</span></li>
       <li><span class="val"><b>Transitivity</b> — if X&gt;Y and Y&gt;Z then X&gt;Z (else Condorcet paradox)</span></li>
@@ -459,14 +459,14 @@
 
     <div style="margin-top:6px;display:grid;grid-template-columns:1fr 1fr;gap:6px;">
       <div>
-        <div style="font-family:var(--font-head);font-size:10px;color:var(--muted);margin-bottom:4px;">PROBLEMS</div>
+        <div style="font-family:var(--font-head);font-size:10px;color:#888888;margin-bottom:4px;">PROBLEMS</div>
         <div class="row" style="margin-bottom:3px;"><span class="label red" style="min-width:80px;">Wastes resources</span><span class="val">Effort on lobbying instead of producing</span></div>
         <div class="row" style="margin-bottom:3px;"><span class="label red" style="min-width:80px;">Distorts incentives</span><span class="val">Lobby instead of innovate</span></div>
         <div class="row" style="margin-bottom:3px;"><span class="label red" style="min-width:80px;">Shrinks welfare</span><span class="val">Economic pie shrinks overall</span></div>
         <div class="row" style="margin-bottom:3px;"><span class="label red" style="min-width:80px;">Corruption</span><span class="val">Officials decide by who lobbies, not merit</span></div>
       </div>
       <div>
-        <div style="font-family:var(--font-head);font-size:10px;color:var(--muted);margin-bottom:4px;">GRAPH LOGIC</div>
+        <div style="font-family:var(--font-head);font-size:10px;color:#888888;margin-bottom:4px;">GRAPH LOGIC</div>
         <div class="row" style="margin-bottom:3px;"><span class="label" style="min-width:80px;">Diagram</span><span class="val">D=AR (downward) · MR below D · MC=AC horizontal</span></div>
         <div class="row" style="margin-bottom:3px;"><span class="label ylw" style="min-width:80px;">Profit rect.</span><span class="val">(P<sub>m</sub>−AC)×Q<sub>m</sub> = the rent being sought</span></div>
         <div class="row" style="margin-bottom:3px;"><span class="label red" style="min-width:80px;">DWL triangle</span><span class="val">Between Q<sub>m</sub> and Q<sub>c</sub></span></div>
