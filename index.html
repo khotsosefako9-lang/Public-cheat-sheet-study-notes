@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Public Economics — Cram Sheet</title>
+<style>
+  :root {
+    --bg: #0e0f13;
+    --surface: #161820;
+    --border: #2a2d3a;
+    --accent: #e8c84a;
+    --accent2: #4ab8e8;
+    --accent3: #e84a7a;
+    --text: #d8dae8;
+    --muted: #7a7d96;
+    --green: #4ae8a0;
+    --orange: #e89a4a;
+    --font-head: 'IBM Plex Mono', monospace;
+    --font-body: 'IBM Plex Sans', system-ui, sans-serif;
+  }
+
+  @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap');
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font-body);
+    font-size: 12.5px;
+    line-height: 1.5;
+    padding: 16px;
+  }
+
+  /* ── HEADER ── */
+  .page-header {
+    border: 1px solid var(--accent);
+    padding: 10px 14px;
+    margin-bottom: 14px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 6px;
+    background: #1a1c10;
+  }
+  .page-header h1 {
+    font-family: var(--font-head);
+    font-size: 14px;
+    color: var(--accent);
+    letter-spacing: 0.05em;
+  }
+  .page-header .meta {
+    font-family: var(--font-head);
+    font-size: 10.5px;
+    color: var(--muted);
+  }
+  .meta span { color: var(--accent2); margin: 0 4px; }
+
+  /* ── GRID ── */
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+  }
+  @media (max-width: 900px) { .grid { grid-template-columns: repeat(2,1fr); } }
+  @media (max-width: 580px) { .grid { grid-template-columns: 1fr; } }
+
+  .span2 { grid-column: span 2; }
+  .span3 { grid-column: span 3; }
+  @media (max-width: 900px) { .span2,.span3 { grid-column: span 2; } }
+  @media (max-width: 580px) { .span2,.span3 { grid-column: span 1; } }
+
+  /* ── CARD ── */
+  .card {
+    border: 1px solid var(--border);
+    background: var(--surface);
+    padding: 10px 12px;
+  }
+  .card-title {
+    font-family: var(--font-head);
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 5px;
+    margin-bottom: 8px;
+    display: flex;
+    justify-content: space-between;
+  }
+  .card-title .ch { color: var(--muted); font-weight: 400; }
+  .card-title .nb { color: var(--accent3); }
+
+  /* ── ROWS / ITEMS ── */
+  .row {
+    display: flex;
+    gap: 6px;
+    margin-bottom: 5px;
+    align-items: baseline;
+  }
+  .label {
+    font-family: var(--font-head);
+    font-size: 10px;
+    color: var(--accent2);
+    min-width: 90px;
+    flex-shrink: 0;
+  }
+  .label.grn { color: var(--green); }
+  .label.red { color: var(--accent3); }
+  .label.ylw { color: var(--accent); }
+  .val { color: var(--text); }
+  .val b { color: var(--accent); font-weight: 600; }
+  .val em { color: var(--muted); font-style: normal; }
+  .val .hi { color: var(--green); }
+  .val .warn { color: var(--orange); }
+
+  /* ── NUMBERED LIST ── */
+  .num-list { counter-reset: item; list-style: none; }
+  .num-list li { counter-increment: item; display: flex; gap: 7px; margin-bottom: 5px; }
+  .num-list li::before {
+    content: counter(item);
+    font-family: var(--font-head);
+    font-size: 10px;
+    color: var(--accent);
+    background: #2a1f00;
+    border: 1px solid var(--accent);
+    width: 16px; height: 16px;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0; margin-top: 1px;
+  }
+
+  /* ── TABLE ── */
+  table { width: 100%; border-collapse: collapse; margin-top: 6px; }
+  th {
+    font-family: var(--font-head);
+    font-size: 9.5px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--muted);
+    border-bottom: 1px solid var(--border);
+    padding: 3px 5px;
+    text-align: left;
+  }
+  td { padding: 3px 5px; border-bottom: 1px solid #1f2130; vertical-align: top; }
+  tr:last-child td { border-bottom: none; }
+  td b { color: var(--accent2); font-weight: 600; }
+  td .pos { color: var(--green); }
+  td .neg { color: var(--accent3); }
+  td .ylw { color: var(--accent); }
+
+  /* ── FORMULA BOX ── */
+  .formula {
+    font-family: var(--font-head);
+    font-size: 11px;
+    color: var(--accent);
+    background: #1a1c10;
+    border-left: 3px solid var(--accent);
+    padding: 5px 8px;
+    margin: 6px 0;
+  }
+
+  /* ── MINI BADGE ── */
+  .badge {
+    display: inline-block;
+    font-family: var(--font-head);
+    font-size: 9px;
+    padding: 1px 5px;
+    border: 1px solid;
+    margin-left: 4px;
+  }
+  .badge.nb { border-color: var(--accent3); color: var(--accent3); }
+  .badge.sec { border-color: var(--accent2); color: var(--accent2); }
+
+  /* ── DIVIDER ── */
+  .divider { border: none; border-top: 1px solid var(--border); margin: 7px 0; }
+
+  /* ── NOTE ── */
+  .note {
+    font-size: 10.5px;
+    color: var(--muted);
+    border-left: 2px solid var(--border);
+    padding-left: 6px;
+    margin-top: 5px;
+  }
+  .note b { color: var(--orange); }
+
+  /* ── FOOTER ── */
+  .footer {
+    font-family: var(--font-head);
+    font-size: 10px;
+    color: var(--muted);
+    border-top: 1px solid var(--border);
+    margin-top: 14px;
+    padding-top: 8px;
+    text-align: center;
+    letter-spacing: 0.06em;
+  }
+  .footer span { color: var(--accent3); }
+</style>
+</head>
+<body>
+
+<!-- ── HEADER ── -->
+<header class="page-header">
+  <h1>Public Economics — Cram Sheet &middot; Ch 1 · 2 · 3 · 5 · 11 · 12</h1>
+  <div class="meta">
+    4 Jun 2026 · 14:00–17:00
+    <span>|</span> Sec A: 15 MCQ
+    <span>|</span> Sec B: 35 marks · 7 Short Q
+    <span>|</span> Sec C: 50 marks · 4 Long Q
+  </div>
+</header>
+
+<div class="grid">
+
+  <!-- ══════════════ CH 1 — INTRO ══════════════ -->
+  <div class="card">
+    <div class="card-title">Views of Gov't <span class="ch">Ch 1</span></div>
+
+    <div class="row">
+      <span class="label">Organic</span>
+      <span class="val">State is natural. People serve the group. Gov't can override individual freedom for collective goals.</span>
+    </div>
+    <div class="row">
+      <span class="label">Mechanistic</span>
+      <span class="val">State is man-made. Gov't serves people. Authority only exists with the people's consent.</span>
+    </div>
+
+    <hr class="divider">
+    <div class="card-title" style="border:none;padding:0;margin-bottom:6px;">Levels of Gov't</div>
+
+    <div class="row"><span class="label ylw">National</span><span class="val">Defence · fiscal policy · SARB · grants</span></div>
+    <div class="row"><span class="label ylw">Provincial</span><span class="val">Education · healthcare · social dev</span></div>
+    <div class="row"><span class="label ylw">Local</span><span class="val">Water · electricity · roads · housing</span></div>
+  </div>
+
+  <!-- ── Private vs Public Sector ── -->
+  <div class="card">
+    <div class="card-title">Private vs Public Sector <span class="nb badge nb">NB</span><span class="ch">Ch 1</span></div>
+
+    <div class="row">
+      <span class="label grn">Injects (G)</span>
+      <span class="val">Gov't spending puts money into the economy → stimulates demand. <b>Deficit:</b> G &gt; T → must borrow → builds public debt</span>
+    </div>
+    <div class="row">
+      <span class="label red">Withdraws (T)</span>
+      <span class="val">Tax pulls money out → reduces spending power. <b>Surplus:</b> T &gt; G</span>
+    </div>
+
+    <div class="formula">Y = C + I + G + (X − M)</div>
+
+    <div class="note">Tax decisions affect disposable income; spending decisions affect demand — gov't shapes both sides of the circular flow.</div>
+  </div>
+
+  <!-- ══════════════ CH 2 — EFFICIENCY ══════════════ -->
+  <div class="card">
+    <div class="card-title">3 Types of Efficiency <span class="nb badge nb">NB</span><span class="ch">Ch 2</span></div>
+    <ul class="num-list">
+      <li><span class="val"><b>Allocative</b> — Right mix of goods. Price = marginal cost (P = MC). No one can be made better off by shifting resources.</span></li>
+      <li><span class="val"><b>Productive</b> — Lowest-cost production. Economy sits on the PPF — no inputs wasted.</span></li>
+      <li><span class="val"><b>Dynamic</b> — Efficient over time. Resources support innovation and investment into the future.</span></li>
+    </ul>
+  </div>
+
+  <!-- ── Neoclassical Assumptions ── -->
+  <div class="card">
+    <div class="card-title">Neoclassical Assumptions <span class="nb badge nb">NB</span><span class="ch">Ch 2</span></div>
+
+    <div class="row"><span class="label">Perfect comp.</span><span class="val">Many buyers/sellers — no one sets the price (price-takers)</span></div>
+    <div class="row"><span class="label">Full info</span><span class="val">Everyone has the same information — no hidden info</span></div>
+    <div class="row"><span class="label">No externalities</span><span class="val">All costs &amp; benefits show up in prices</span></div>
+    <div class="row"><span class="label">No public goods</span><span class="val">Everything is private — rival &amp; excludable</span></div>
+    <div class="row"><span class="label">No merit goods</span><span class="val">People know what's best for themselves (consumer sovereignty)</span></div>
+    <div class="row"><span class="label">Rational agents</span><span class="val">Consumers max utility · firms max profit</span></div>
+    <div class="row"><span class="label">Factor mobility</span><span class="val">Labour &amp; capital move freely with no barriers</span></div>
+
+    <div class="note"><b>Key rule:</b> If ANY assumption fails → market failure → gov't justified to step in.</div>
+  </div>
+
+  <!-- ── 3 Conditions for Equilibrium ── -->
+  <div class="card">
+    <div class="card-title">3 Equilibrium Conditions <span class="ch">Ch 2</span></div>
+    <ul class="num-list">
+      <li><span class="val"><b>Exchange:</b> MRS<sub>A</sub> = MRS<sub>B</sub> — all consumers trade off goods at the same rate</span></li>
+      <li><span class="val"><b>Production:</b> MRTS<sub>1</sub> = MRTS<sub>2</sub> — all firms use inputs in the same ratio</span></li>
+      <li><span class="val"><b>Product mix:</b> MRS = MRT — what consumers want to give up = what society can produce</span></li>
+    </ul>
+  </div>
+
+  <!-- ── Gov't Functions ── -->
+  <div class="card">
+    <div class="card-title">Gov't Functions &amp; Intervention <span class="ch">Ch 2</span></div>
+    <ul class="num-list">
+      <li><span class="val"><b>Allocation</b> — Fix market failures; provide public goods</span></li>
+      <li><span class="val"><b>Distribution</b> — Use taxes &amp; transfers to share income more fairly</span></li>
+      <li><span class="val"><b>Stabilisation</b> — Keep employment, prices &amp; growth stable</span></li>
+    </ul>
+    <hr class="divider">
+    <div class="row"><span class="label">Direct</span><span class="val">Public production · regulation · price controls</span></div>
+    <div class="row"><span class="label">Indirect</span><span class="val">Taxes · subsidies · transfer payments</span></div>
+  </div>
+
+  <!-- ══════════════ CH 3 — EXTERNALITIES ══════════════ -->
+  <div class="card span2">
+    <div class="card-title">Externalities — Core <span class="badge sec">→ Sec C</span><span class="ch">Ch 3</span></div>
+
+    <div class="row">
+      <span class="label">Definition</span>
+      <span class="val">A side-effect on a third party that is <b>not priced into the market</b> — the cause gets no penalty or reward for it</span>
+    </div>
+
+    <div class="formula">MSC = MPC + MEC &nbsp;&nbsp; MSB = MPB + MEB</div>
+
+    <div class="row"><span class="label">Tech. ext.</span><span class="val"><hi class="hi">Physical effect</hi> on others → <b>true market failure</b> → gov't should intervene (e.g. factory pollutes river)</span></div>
+    <div class="row"><span class="label">Pecuniary ext.</span><span class="val">Effect works <b>through prices</b> → NOT a market failure → no intervention needed (e.g. new shop raises nearby rents)</span></div>
+
+    <hr class="divider">
+
+    <table>
+      <thead>
+        <tr><th></th><th class="neg">Negative Externality</th><th class="pos">Positive Externality</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><b>Why it happens</b></td><td>MEC &gt; 0 → MSC &gt; MPC — true cost is <em>understated</em></td><td>MEB &gt; 0 → MSB &gt; MPB — benefit is <em>understated</em></td></tr>
+        <tr><td><b>Market result</b></td><td>Overproduces at too low a price (E₀)</td><td>Underproduces at too low a price (E₀)</td></tr>
+        <tr><td><b>Social optimum</b></td><td>E₁: MSC = MSB — lower Q, higher P</td><td>E₁: MSB = MSC — higher Q, higher P</td></tr>
+        <tr><td><b>DWL</b></td><td>Triangle between E₀ and E₁</td><td>Triangle between E₀ and E₁</td></tr>
+        <tr><td><b>Fix</b></td><td>Pigouvian <span class="neg">tax</span> = MEC → shifts MPC up to MSC</td><td>Pigouvian <span class="pos">subsidy</span> = MEB → shifts MPB up to MSB</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ── Solutions + Public Goods ── -->
+  <div class="card">
+    <div class="card-title">Solutions &amp; Public Goods <span class="nb badge nb">NB</span><span class="ch">Ch 3</span></div>
+
+    <div class="row"><span class="label">Pigouvian</span><span class="val">Tax = MEC (neg) · Subsidy = MEB (pos)</span></div>
+    <div class="row"><span class="label">Regulation</span><span class="val">Standards, limits, bans — force firms to absorb social costs</span></div>
+    <div class="row"><span class="label">Cap &amp; trade</span><span class="val">Total pollution capped; permits issued; firms buy/sell — cheapest way to hit target</span></div>
+    <div class="row"><span class="label">Coase</span><span class="val">Clear property rights + zero transaction costs → parties bargain privately. <em>Fails at scale.</em></span></div>
+
+    <hr class="divider">
+
+    <table>
+      <thead><tr><th>Private Good</th><th>Public Good</th></tr></thead>
+      <tbody>
+        <tr><td>Rival + excludable</td><td>Non-rival + non-excludable</td></tr>
+        <tr><td>Horizontal ΣQ · P = MC</td><td>Vertical ΣP · ΣMRS = MC</td></tr>
+        <tr><td>Markets work efficiently</td><td>Free-rider → under-provided</td></tr>
+      </tbody>
+    </table>
+    <div class="note">Free-rider: people enjoy the good without paying → firms can't recover costs → market won't supply it.</div>
+  </div>
+
+  <!-- ══════════════ CH 5 — WELFARE & VOTING ══════════════ -->
+  <div class="card span2">
+    <div class="card-title">Pareto, Nozick &amp; Welfare Functions <span class="nb badge nb">NB</span><span class="ch">Ch 5</span></div>
+
+    <div class="row">
+      <span class="label">Pareto</span>
+      <span class="val">A policy is OK only if <b>at least one person gains and nobody loses.</b> Rarely met in practice. Three ways redistribution can still be Pareto-compatible: <span class="hi">(1) Externality</span> — helping the poor benefits everyone (less crime, disease); <span class="hi">(2) Insurance</span> — behind a veil of ignorance, rational people choose social safety nets; <span class="hi">(3) Altruism</span> — rich people genuinely gain utility when the poor are better off.</span>
+    </div>
+
+    <hr class="divider">
+
+    <div class="row">
+      <span class="label">Nozick</span>
+      <span class="val">Libertarian view. Redistribute only to fix injustice. Three principles of justice:</span>
+    </div>
+    <div class="row"><span class="label" style="min-width:110px;">① Acquisition</span><span class="val">You can take unowned things as long as you don't leave others worse off</span></div>
+    <div class="row"><span class="label" style="min-width:110px;">② Transfer</span><span class="val">Voluntary transfers of justly held goods are always just</span></div>
+    <div class="row"><span class="label" style="min-width:110px;">③ Rectification</span><span class="val">Unjust gains or forced transfers must be corrected</span></div>
+
+    <hr class="divider">
+
+    <table>
+      <thead><tr><th>Cardinal (Utilitarian)</th><th>Ordinal</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>W = U<sub>A</sub> + U<sub>B</sub> — utility is measurable and can be added across people</td>
+          <td>W = W(U<sub>A</sub>, U<sub>B</sub>) — only rankings, no measurement or comparison needed</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <hr class="divider">
+
+    <div class="row">
+      <span class="label">Rawls (maximin)</span>
+      <span class="val"><b>W = Min(U<sub>A</sub>, U<sub>B</sub>)</b> — social welfare = the <b>worst-off person's</b> utility. To raise W, raise the bottom. Behind the veil of ignorance, rational people choose this rule. <em class="warn">Limitation:</em> ignores everyone else — even a tiny gain for the poorest can justify huge sacrifices by everyone else.</span>
+    </div>
+
+    <div class="note"><b>Optimal welfare point H:</b> where the utility possibility curve (QR) touches the highest attainable social welfare contour (W curve).</div>
+  </div>
+
+  <!-- ── Voting ── -->
+  <div class="card">
+    <div class="card-title">Voting Rules &amp; Median Voter <span class="nb badge nb">NB</span><span class="ch">Ch 5</span></div>
+
+    <table>
+      <thead><tr><th>Rule</th><th>Key Point</th></tr></thead>
+      <tbody>
+        <tr><td><b>Dictatorial</b></td><td>1 person decides everything</td></tr>
+        <tr><td><b>Unanimity</b></td><td>All must agree — protects everyone but easy to block</td></tr>
+        <tr><td><b>Majority (50%+1)</b></td><td>Most common; faster; no minority veto</td></tr>
+        <tr><td><b>Plurality</b></td><td>Highest vote count wins — no majority needed</td></tr>
+      </tbody>
+    </table>
+
+    <hr class="divider">
+
+    <div class="row">
+      <span class="label">Median voter</span>
+      <span class="val">The middle voter always wins under majority rule. <em>Example:</em> Preferences of 2, 4, <b>6</b>, 8, 10 → outcome = <b>6</b>. Any move away from the median loses.</span>
+    </div>
+    <div class="note">Assumes single-peaked preferences (everyone has one clear most-preferred outcome).</div>
+  </div>
+
+  <!-- ── Decision Costs ── -->
+  <div class="card">
+    <div class="card-title">Decision Costs &amp; Arrow <span class="nb badge nb">NB</span><span class="ch">Ch 5</span></div>
+
+    <div class="row"><span class="label ylw">C_D (decision)</span><span class="val">Slopes <b>up</b> — harder &amp; costlier to get agreement as threshold rises</span></div>
+    <div class="row"><span class="label red">C_E (external)</span><span class="val">Slopes <b>down</b> — fewer people get outvoted as threshold rises</span></div>
+    <div class="row"><span class="label grn">C_T = C_D + C_E</span><span class="val">U-shaped. Bottom = <b>M*</b> = optimal majority. Above 50%, below 100%.</span></div>
+
+    <hr class="divider">
+
+    <div style="margin-bottom:5px;font-family:var(--font-head);font-size:10px;color:var(--accent);">Arrow's Impossibility — 5 Conditions (no rule can satisfy all)</div>
+    <ul class="num-list">
+      <li><span class="val"><b>Rationality</b> — clear, complete preferences</span></li>
+      <li><span class="val"><b>Transitivity</b> — if X&gt;Y and Y&gt;Z then X&gt;Z (else Condorcet paradox)</span></li>
+      <li><span class="val"><b>Non-dictatorship</b> — no single person controls all outcomes</span></li>
+      <li><span class="val"><b>Pareto</b> — if everyone prefers X, society must prefer X</span></li>
+      <li><span class="val"><b>IIA</b> — X vs Y ranking can't be changed by adding a third option Z</span></li>
+    </ul>
+  </div>
+
+  <!-- ── Politicians & Rent Seeking ── -->
+  <div class="card span2">
+    <div class="card-title">Politicians vs Bureaucrats &amp; Rent Seeking <span class="nb badge nb">NB</span><span class="ch">Ch 5</span></div>
+
+    <table>
+      <thead><tr><th>Politicians</th><th>Bureaucrats (Niskanen)</th></tr></thead>
+      <tbody>
+        <tr><td>Vote-maximising → target the median voter</td><td>Budget-maximising → bigger budget = more power &amp; status</td></tr>
+        <tr><td>Short-term; popular decisions over efficient ones</td><td>Have an info advantage; tend to <em>oversupply</em> output</td></tr>
+      </tbody>
+    </table>
+
+    <hr class="divider">
+
+    <div class="row">
+      <span class="label">Rent seeking</span>
+      <span class="val"><b>Using political influence to gain economic benefit without creating value</b> — redistributing existing wealth, not making new. Legal but wasteful. <em>Example: spending R5m lobbying for a R6m contract.</em></span>
+    </div>
+
+    <div style="margin-top:6px;display:grid;grid-template-columns:1fr 1fr;gap:6px;">
+      <div>
+        <div style="font-family:var(--font-head);font-size:10px;color:var(--muted);margin-bottom:4px;">PROBLEMS</div>
+        <div class="row" style="margin-bottom:3px;"><span class="label red" style="min-width:80px;">Wastes resources</span><span class="val">Effort on lobbying instead of producing</span></div>
+        <div class="row" style="margin-bottom:3px;"><span class="label red" style="min-width:80px;">Distorts incentives</span><span class="val">Lobby instead of innovate</span></div>
+        <div class="row" style="margin-bottom:3px;"><span class="label red" style="min-width:80px;">Shrinks welfare</span><span class="val">Economic pie shrinks overall</span></div>
+        <div class="row" style="margin-bottom:3px;"><span class="label red" style="min-width:80px;">Corruption</span><span class="val">Officials decide by who lobbies, not merit</span></div>
+      </div>
+      <div>
+        <div style="font-family:var(--font-head);font-size:10px;color:var(--muted);margin-bottom:4px;">GRAPH LOGIC</div>
+        <div class="row" style="margin-bottom:3px;"><span class="label" style="min-width:80px;">Diagram</span><span class="val">D=AR (downward) · MR below D · MC=AC horizontal</span></div>
+        <div class="row" style="margin-bottom:3px;"><span class="label ylw" style="min-width:80px;">Profit rect.</span><span class="val">(P<sub>m</sub>−AC)×Q<sub>m</sub> = the rent being sought</span></div>
+        <div class="row" style="margin-bottom:3px;"><span class="label red" style="min-width:80px;">DWL triangle</span><span class="val">Between Q<sub>m</sub> and Q<sub>c</sub></span></div>
+        <div class="row" style="margin-bottom:3px;"><span class="label red" style="min-width:80px;">With rent seek.</span><span class="val">Total social cost = profit rect. + DWL triangle</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════ CH 11 — TAX THEORY ══════════════ -->
+  <div class="card">
+    <div class="card-title">Sources of Finance <span class="ch">Ch 11</span></div>
+    <div class="row"><span class="label ylw">Taxes</span><span class="val">Primary source — compulsory payments by households &amp; firms</span></div>
+    <div class="row"><span class="label ylw">User charges</span><span class="val">Fees for specific gov't services (tolls, tuition)</span></div>
+    <div class="row"><span class="label ylw">Borrowing</span><span class="val">Deferred tax — future taxpayers service the debt</span></div>
+    <div class="row"><span class="label ylw">Seigniorage</span><span class="val">Money creation → inflation erodes purchasing power = inflation tax</span></div>
+    <div class="row"><span class="label ylw">Grants</span><span class="val">Foreign aid + intergovernmental transfers (equitable share)</span></div>
+
+    <hr class="divider">
+
+    <table>
+      <thead><tr><th>System</th><th>ATR</th><th>Example</th></tr></thead>
+      <tbody>
+        <tr><td><b class="pos">Progressive</b></td><td>Rises with income</td><td>SA PIT 18–45%</td></tr>
+        <tr><td><b>Proportional</b></td><td>Constant (flat %)</td><td>Flat tax; company tax rate</td></tr>
+        <tr><td><b class="neg">Regressive</b></td><td>Falls with income</td><td>VAT hits low-income harder</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ── Tax Classifications ── -->
+  <div class="card">
+    <div class="card-title">Tax Classifications <span class="ch">Ch 11</span></div>
+    <div class="row"><span class="label">General</span><span class="val">All goods equally — no relative price change → approaches neutrality</span></div>
+    <div class="row"><span class="label">Selective</span><span class="val">Specific goods only → distorts relative prices → substitution → DWL</span></div>
+    <hr class="divider">
+    <div class="row"><span class="label">Specific</span><span class="val">Fixed R/unit (R5/litre) → supply shifts up by <b>fixed</b> (parallel) amount</span></div>
+    <div class="row"><span class="label">Ad valorem</span><span class="val">% of price (15% VAT) → supply shift <b>widens</b> at higher prices</span></div>
+    <hr class="divider">
+    <div class="row"><span class="label">Direct</span><span class="val">Paid by the intended person; hard to shift (income tax, CGT)</span></div>
+    <div class="row"><span class="label">Indirect</span><span class="val">Collected by seller; cost passed to consumer via higher prices (VAT, excise)</span></div>
+  </div>
+
+  <!-- ── Criteria for a Good Tax ── -->
+  <div class="card">
+    <div class="card-title">Criteria for a Good Tax &amp; Equity <span class="nb badge nb">NB</span><span class="ch">Ch 11</span></div>
+    <ul class="num-list">
+      <li><span class="val"><b>Equity</b> — fair; horizontal &amp; vertical</span></li>
+      <li><span class="val"><b>Efficiency</b> — minimal distortion &amp; DWL</span></li>
+      <li><span class="val"><b>Simplicity</b> — easy to understand and comply with</span></li>
+      <li><span class="val"><b>Revenue adequacy</b> — raises enough to fund public spending</span></li>
+      <li><span class="val"><b>Flexibility</b> — adjusts automatically to economic conditions; progressive tax = automatic stabiliser (tax falls in recessions, rises in booms)</span></li>
+    </ul>
+    <hr class="divider">
+    <div class="row"><span class="label grn">Horizontal equity</span><span class="val">Same income = same tax. Equals treated equally.</span></div>
+    <div class="row"><span class="label ylw">Vertical equity</span><span class="val">Higher ability to pay → pay more. Main justification for progressive tax.</span></div>
+  </div>
+
+  <!-- ══════════════ CH 12 — TAX BURDEN ══════════════ -->
+  <div class="card span2">
+    <div class="card-title">Normal vs Excess Burden <span class="nb badge nb">NB</span><span class="ch">Ch 12</span></div>
+
+    <table>
+      <thead>
+        <tr><th></th><th>Normal (General) Burden</th><th>Excess Burden (DWL)</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><b>Effect</b></td>
+          <td>Income effect only — you're poorer but don't switch between goods</td>
+          <td>Income <b>+</b> substitution effect — you switch away from taxed goods</td>
+        </tr>
+        <tr>
+          <td><b>Prices</b></td>
+          <td>Relative prices unchanged → no distortion</td>
+          <td>Relative prices distorted → DWL triangle appears</td>
+        </tr>
+        <tr>
+          <td><b>Welfare loss</b></td>
+          <td>Exactly equal to revenue raised</td>
+          <td>Exceeds revenue raised</td>
+        </tr>
+        <tr>
+          <td><b>DWL grows with</b></td>
+          <td colspan="2"><span class="ylw">(1) Tax rate² — doubling the rate more than doubles the DWL</span> &nbsp;&nbsp; <span class="ylw">(2) Price elasticity</span> — more elastic market = bigger quantity response = bigger DWL</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <hr class="divider">
+
+    <div class="row">
+      <span class="label">Graph steps</span>
+      <span class="val">E₀ (P₀, Q₀) → selective tax shifts supply up → E₁ (P₁, Q₁). <b>Revenue</b> = tax × Q₁ (rectangle). <b>DWL</b> = triangle between Q₁ and Q₀ — value lost that gov't never collected.</span>
+    </div>
+  </div>
+
+  <!-- ── Lump Sum Tax ── -->
+  <div class="card">
+    <div class="card-title">Tax Neutrality &amp; Lump Sum <span class="nb badge nb">NB</span><span class="ch">Ch 12</span></div>
+
+    <div class="row">
+      <span class="label">Neutral tax</span>
+      <span class="val">No excess burden — welfare loss = revenue exactly. General taxes approach neutrality. Selective taxes are always non-neutral.</span>
+    </div>
+
+    <hr class="divider">
+
+    <div class="row">
+      <span class="label grn">Lump sum</span>
+      <span class="val"><b>Fixed amount regardless of behaviour</b> → no substitution effect → no DWL → Pareto-efficient. Like a poll tax — same bill for everyone no matter what you earn or buy.</span>
+    </div>
+    <div class="note"><b>Why it fails in practice:</b> Regressive — same rand amount hits low earners harder. Ignores ability to pay. Politically unpopular.</div>
+  </div>
+
+  <!-- ── Lump Sum vs Selective ── -->
+  <div class="card span3">
+    <div class="card-title">Lump Sum vs Selective Tax (Same Revenue) <span class="nb badge nb">NB Key Diagram</span><span class="ch">Ch 12</span></div>
+
+    <table>
+      <thead>
+        <tr><th></th><th class="grn">Lump Sum Tax</th><th class="neg">Selective Tax</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><b>Budget line</b></td>
+          <td class="pos">Parallel inward shift — relative prices unchanged</td>
+          <td class="neg">Rotates inward on taxed good's axis — relative price rises</td>
+        </tr>
+        <tr>
+          <td><b>Effects</b></td>
+          <td>Income effect only</td>
+          <td>Income + substitution effect</td>
+        </tr>
+        <tr>
+          <td><b>Indiff. curve</b></td>
+          <td>Lower IC but optimal bundle is preserved</td>
+          <td>Even lower IC — substitution drags consumer further down</td>
+        </tr>
+        <tr>
+          <td><b>Excess burden</b></td>
+          <td class="pos">None — welfare loss = revenue exactly</td>
+          <td class="neg">Positive — welfare loss &gt; revenue; gap = DWL</td>
+        </tr>
+        <tr>
+          <td><b>Efficiency</b></td>
+          <td class="pos">Pareto-efficient</td>
+          <td class="neg">Not Pareto-efficient — behaviour is distorted</td>
+        </tr>
+        <tr>
+          <td><b>Equity</b></td>
+          <td class="neg">Highly regressive — same rand amount on rich &amp; poor</td>
+          <td>Can be progressive / proportional / regressive by design</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="note" style="margin-top:8px;"><b>Bottom line:</b> For the same revenue, a lump sum tax always leaves the consumer better off than a selective tax. The selective tax forces the consumer onto a lower indifference curve than necessary — the extra drop is the excess burden (pure social waste).</div>
+  </div>
+
+</div>
+
+<!-- ── FOOTER ── -->
+<div class="footer">
+  Public Economics · Exam 4 June 2026 · Ch 1, 2, 3, 5, 11, 12
+  &nbsp;<span>★ NB = High Priority</span>&nbsp;
+  <span>→ Sec C = Long Question</span>
+</div>
+
+</body>
+</html>
